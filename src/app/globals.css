@@ -1,0 +1,125 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+input, button, select, textarea { font-family: inherit; }
+
+.hk-input {
+  width: 100%;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 14px;
+  padding: 12px 16px;
+  font-size: 16px;
+  outline: none;
+  background: white;
+  transition: border-color 0.15s;
+}
+.hk-input:focus { border-color: #1D9E75; }
+
+.hk-btn-primary {
+  width: 100%;
+  background: #1D9E75;
+  color: white;
+  border: none;
+  border-radius: 14px;
+  padding: 16px;
+  font-size: 17px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: background 0.15s, transform 0.1s;
+  -webkit-tap-highlight-color: transparent;
+}
+.hk-btn-primary:active { background: #178a63; transform: scale(0.98); }
+.hk-btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.hk-btn-secondary {
+  width: 100%;
+  background: #f3f4f6;
+  color: #374151;
+  border: none;
+  border-radius: 14px;
+  padding: 14px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: background 0.15s, transform 0.1s;
+  -webkit-tap-highlight-color: transparent;
+}
+.hk-btn-secondary:active { background: #e5e7eb; transform: scale(0.98); }
+
+.hk-btn-danger {
+  width: 100%;
+  background: #fef2f2;
+  color: #dc2626;
+  border: none;
+  border-radius: 14px;
+  padding: 14px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: background 0.15s, transform 0.1s;
+  -webkit-tap-highlight-color: transparent;
+}
+.hk-btn-danger:active { background: #fee2e2; transform: scale(0.98); }
+
+.hk-card {
+  background: white;
+  border-radius: 18px;
+  border: 1px solid #f0f0f0;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+}
+
+.hk-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 500;
+  color: #6b7280;
+  margin-bottom: 6px;
+}
+
+.hk-error {
+  background: #fef2f2;
+  color: #dc2626;
+  border-radius: 12px;
+  padding: 12px;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.hk-success {
+  background: #f0fdf4;
+  color: #16a34a;
+  border-radius: 12px;
+  padding: 12px;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.spin { animation: spin 1s linear infinite; }
+@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+.task-flip {
+  transition: transform 0.5s ease;
+  transform-style: preserve-3d;
+}
+.task-flip.flipped { transform: rotateY(180deg); }
+.task-face { backface-visibility: hidden; -webkit-backface-visibility: hidden; }
+.task-face.back { transform: rotateY(180deg); }

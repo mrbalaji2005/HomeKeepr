@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
-import { v4 as uuidv4 } from 'uuid'
+
 
 export async function POST(req: NextRequest) {
   const supabase = createClient()
@@ -13,7 +13,7 @@ export async function POST(req: NextRequest) {
   const { amount, note, is_emi, emi_months } = await req.json()
 
   if (is_emi && emi_months > 1) {
-    const emi_group_id = uuidv4()
+    const emi_group_id = crypto.randomUUID()
     const installment = Math.round(amount / emi_months)
     const today = new Date()
 

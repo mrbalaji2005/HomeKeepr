@@ -13,7 +13,7 @@ export default async function SalaryPage() {
 
   const { data: settings } = await supabase.from('salary_settings').select('*').eq('household_id', profile.household_id).single()
   const { data: advances } = await supabase.from('salary_advances').select('*').eq('household_id', profile.household_id).order('advance_date', { ascending: false })
-  const { data: payments } = await supabase.from('salary_payments').select('*').eq('household_id', profile.household_id).order('payment_date', { ascending: false }).limit(6)
+  const { data: payments } = await supabase.from('salary_payments').select('*').eq('household_id', profile.household_id).order('payment_date', { ascending: false })
 
   return <SalaryTracker profile={profile} settings={settings} advances={advances || []} payments={payments || []} />
 }

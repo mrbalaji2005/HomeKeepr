@@ -12,7 +12,6 @@ export async function POST(req: NextRequest) {
   const { monthly_amount, advances_total } = await req.json()
   const net = Math.max(0, monthly_amount - advances_total)
 
-  // Get current month advances that are unpaid (no payment_id yet)
   const today = new Date()
   const monthStart = new Date(today.getFullYear(), today.getMonth(), 1).toISOString().split('T')[0]
   const monthEnd = new Date(today.getFullYear(), today.getMonth() + 1, 0).toISOString().split('T')[0]
@@ -25,7 +24,6 @@ export async function POST(req: NextRequest) {
     .gte('advance_date', monthStart)
     .lte('advance_date', monthEnd)
 
-  // Create payment record
   const { data: payment, error: payErr } = await supabase
     .from('salary_payments')
     .insert({
@@ -39,7 +37,6 @@ export async function POST(req: NextRequest) {
 
   if (payErr) return NextResponse.json({ error: payErr.message }, { status: 500 })
 
-  // Link current advances to this payment instead of deleting
   if (currentAdvances && currentAdvances.length > 0) {
     await supabase
       .from('salary_advances')
